@@ -11,9 +11,20 @@ function Signup() {
       }));
     };
 
-    const handleSubmit=(e) =>{
+    const handleSubmit= async(e) =>{
       e.preventDefault();
       console.log(formData);
+      //api
+    
+      const response =await fetch("http://localhost:8000/signup",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+      },
+      body:JSON.stringify(formData),
+});
+      const jsonData=await response.json();
+      console.log(jsonData)
 };
     return (
       <>
